@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is the proper level of abstraction for world models?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.2;
+            margin: 10px;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            max-width: 88%;
+        }
+        h1 {
+            color: #444;
+        }
+        .date {
+            color: #666;
+            font-size: x-small
+        }
+        img {
+            max-width: 95%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>What is the proper level of abstraction for world models that generate simulated task rollouts?</h1>
+        <p class="date">Sonny George<br>Published on: 2025-10-01</p>
+
+        <p>As excitement builds around 'planning with simulated rollouts,' an open question remains regarding the appropriate method and degree of abstraction in world model I/O spaces.</p>
+
+        <p>Video is an intuitive I/O space for generating simulated rollouts. Video contains high levels of detail. Vision is perhaps our most informative sense. Plus, the “massive data” of internet video is ripe and ready for the task. Therefore, if we can generate realistic-enough video rollouts, then this is definitely a parsimonious solution. There is a lot of justified hype here. (See e.g., <a href="https://universal-simulator.github.io/unisim/">UniSim</a> or <a href="https://sites.google.com/view/genie-2024/">Genie</a>)</p>
+
+        <p>However, could much of the pixel-by-pixel details be unnecessary for basic action—creating, at best, potentially expensive prediction overhead, and at worst, SGD distraction that prevents the learning of anything useful for long-tail and OOD scenarios? For example, with uncommon prompt scenarios, video models are often great with small details (e.g., textures) while struggling with higher-level dynamics (e.g., maintaining the physical coherence of a dynamic object).</p>
+
+        <p>Can we map internet-scale video data into a less detailed and more generalized representation space with appropriate abstraction and little-to-no superfluous detail? Recently, Yann Lecun seems to be of <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf">the opinion</a> that doing so is not only feasible, but also an inevitable necessity for "autonomous machine intelligence".</p>
+            
+        <p>Roboticists, in some senses attempt to do this when they, before learning control policies, distill image/lidar data into assortments of 3d representations (maps, way points, point clouds, voxels, etc.). Could something like this be usefully done with internet-scale video?</p>
+        
+        <p>Whether converting the training video to (1) an assortment of simplified 3d representations or (2) some other representation space with a theoretically higher (relavent-) signal-to-noise ratio, what stands to be gained/lost?</p>
+            
+        <p>Beside (perhaps) ameliorating the signal-to-noise ratio, could converting massive video datasets to 3d representations have other benefits for training world models? E.g.,</p>
+            <p style="margin:5px;margin-left:20px">(1) Cross-embodiment postive learning transfer—that is, not being confined to one agent-embodiment per world model by conditioning generation on an agent-embodiment specification of some sort
+            <br>(2) Being able to penalize/regularize physical abnormalities (e.g. volumetric or joint-range impossibilities when known)
+            <br>(3) Enabling safety measures by directly predicting movement in 3d space—e.g., preventing generations with potential collisions that approach a force threshold</p>
+        
+        <p style="margin: 20px;"></p>
+        <img src="../assets/imgs/diagram_of_abstraction_levels_for_world_models.png" alt="Diagram of abstraction levels for world models">
+    </article>
+</body>
+</html>
