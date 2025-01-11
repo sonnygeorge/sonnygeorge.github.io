@@ -31,7 +31,7 @@
 <body>
     <article>
         <p><a href="../index.html"><< back to home</a></p>
-        
+
         <h1>What is the proper level of I/O abstraction in world models (that generate simulated rollouts)?</h1>
         <p class="date">Sonny George<br>2025-10-01</p>
 
@@ -48,7 +48,7 @@
         <p>Whether converting the training video to (1) (an assortment of) 3d representations or (2) some other representation space with a theoretically higher (relevant-) signal-to-noise ratio, what stands to be gained/lost?</p>
             
         <p>Besides (perhaps) ameliorating the signal-to-noise ratio, could converting massive video datasets to 3d representations have other benefits for training world models? E.g.,</p>
-            <p style="margin:5px;margin-left:20px">(1) Cross-embodiment positive learning transfer—not being confined to a single agent-embodiment (by conditioning generation on some agent-embodiment specification<span style="color: red;">*</span>)
+            <p style="margin:5px;margin-left:20px">(1) Cross-embodiment positive learning transfer—not being confined to learning and generating for a single agent-embodiment (by conditioning generation on some embodiment specification<span style="color: red;">*</span>)
             <br>(2) Easier embodiment-specific inverse dynamics models from outputs (by again, specifying the agent-embodiment in the input<span style="color: red;">*</span> and getting outputs that, in theory, should map directly to the specified embodiment)
             <br>(3) More stable training via loss penalties for physical abnormalities (e.g. volumetric or joint-range impossibilities)
             <br>(4) Enabling safety measures—e.g., preventing generations with potential collisions that approach a force threshold
