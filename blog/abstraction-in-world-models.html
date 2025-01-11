@@ -47,8 +47,10 @@
             
         <p>Beside (perhaps) ameliorating the signal-to-noise ratio, could converting massive video datasets to 3d representations have other benefits for world models? E.g.,</p>
             <p style="margin:5px;margin-left:20px">(1) Cross-embodiment postive learning transfer—that is, not being confined to one agent-embodiment per world model by conditioning generation on some agent-embodiment specification
-            <br>(2) Being able to penalize/regularize physical abnormalities (e.g. volumetric or joint-range impossibilities when known)
-            <br>(3) Enabling safety measures by directly predicting movement in 3d space—e.g., preventing generations with potential collisions that approach a force threshold</p>
+            <br>(2) Easier embodiment-specific inverse dynamics inference from outputs (by again, specifying the agent-embodiment in the input and getting outputs that, in theory, should map directly to the specified embodiment)
+            <br>(3) Being able to penalize/regularize physical abnormalities (e.g. volumetric or joint-range impossibilities when known)
+            <br>(4) Enabling safety measures by directly predicting movement in 3d space—e.g., preventing generations with potential collisions that approach a force threshold
+            </p>
         
         <p style="margin: 20px;"></p>
         <img src="../assets/imgs/diagram_of_abstraction_levels_for_world_models.png" alt="Diagram of abstraction levels for world models">
