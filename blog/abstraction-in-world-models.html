@@ -31,7 +31,7 @@
 <body>
     <article>
         <h1>What is the proper level of I/O abstraction in world models (that generate simulated task rollouts)?</h1>
-        <p class="date">Sonny George<br>Published on: 2025-10-01</p>
+        <p class="date">Sonny George<br>2025-10-01</p>
 
         <p>As excitement builds around 'planning with simulated rollouts,' an open question remains regarding the appropriate method and degree of abstraction in world model I/O spaces.</p>
 
@@ -39,17 +39,17 @@
 
         <p>However, could much of the pixel-by-pixel details be unnecessary for basic action—creating, at best, potentially expensive prediction overhead, and at worst, SGD distraction that prevents the learning of anything useful for long-tail and OOD scenarios? For example, with uncommon prompt scenarios, video models are often great at generating small details (e.g., textures) while struggling with higher-level dynamics (e.g., maintaining the physical coherence of a dynamic object).</p>
 
-        <p>Can we map internet-scale video data into a less detailed and more generalized representation space with appropriate abstraction and little-to-no superfluous detail? Recently, Yann Lecun seems to be of <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf">the opinion</a> that doing so is not only feasible, but also an inevitable necessity for "autonomous machine intelligence". (See e.g., <a href="https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture/">V-JEPA</a>, or the planning latent space of <a href="https://danijar.com/project/daydreamer/">DayDreamer</a>.)</p>
+        <p>Can we map internet-scale video data into a less detailed and more general (abstract) representation space with little-to-no superfluous detail for basic action? Recently, Yann Lecun seems to be of <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf">the opinion</a> that doing so is not only feasible, but also a necessity for "autonomous machine intelligence". (See e.g., <a href="https://ai.meta.com/blog/v-jepa-yann-lecun-ai-model-video-joint-embedding-predictive-architecture/">V-JEPA</a>, or the planning latent space of <a href="https://danijar.com/project/daydreamer/">DayDreamer</a>.)</p>
             
-        <p>Furthermore, roboticists attempt this when they, before learning control policies, distill image/lidar data into pertinent assortments of 3d representations (maps, way points, point clouds, voxels, etc.). Could agent action trajectories in internet-scale video be reliably converted to generally useful 3d representations?</p>
+        <p>Furthermore, roboticists attempt this when they, before learning control policies, distill image/lidar data into assortments of pertinent 3d representations (maps, way points, point clouds, voxels, etc.). Could agent action trajectories in internet-scale video be reliably converted to generally useful 3d representations?</p>
         
-        <p>Whether converting the training video to (1) an assortment of simplified 3d representations or (2) some other representation space with a theoretically higher (relavent-) signal-to-noise ratio, what stands to be gained/lost?</p>
+        <p>Whether converting the training video to (1) an assortment of 3d representations or (2) some other representation space with a theoretically higher (relavent-) signal-to-noise ratio, what stands to be gained/lost?</p>
             
-        <p>Beside (perhaps) ameliorating the signal-to-noise ratio, could converting massive video datasets to 3d representations have other benefits for world models? E.g.,</p>
-            <p style="margin:5px;margin-left:20px">(1) Cross-embodiment postive learning transfer—that is, not being confined to one agent-embodiment per world model by conditioning generation on some agent-embodiment specification
-            <br>(2) Easier embodiment-specific inverse dynamics inference from outputs (by again, specifying the agent-embodiment in the input and getting outputs that, in theory, should map directly to the specified embodiment)
-            <br>(3) Being able to penalize/regularize physical abnormalities (e.g. volumetric or joint-range impossibilities when known)
-            <br>(4) Enabling safety measures by directly predicting movement in 3d space—e.g., preventing generations with potential collisions that approach a force threshold
+        <p>Beside (perhaps) ameliorating the signal-to-noise ratio, could converting massive video datasets to 3d representations have other benefits for training world models? E.g.,</p>
+            <p style="margin:5px;margin-left:20px">(1) Cross-embodiment postive learning transfer—not being confined to one agent-embodiment by conditioning generation on some agent-embodiment specification<span style="color: red;">*</span>
+            <br>(2) Easier embodiment-specific inverse dynamics models from outputs (by again, specifying the agent-embodiment in the input<span style="color: red;">*</span> and getting outputs that, in theory, should map directly to the specified embodiment)
+            <br>(3) More stable training via loss penalties for physical abnormalities (e.g. volumetric or joint-range impossibilities)
+            <br>(4) Enabling safety measures—e.g., preventing generations with potential collisions that approach a force threshold
             </p>
         
         <p style="margin: 20px;"></p>
